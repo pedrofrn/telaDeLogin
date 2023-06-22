@@ -1,0 +1,11 @@
+body {
+    background-color: blueviolet;
+    padding: 20px;
+}
+
+div#content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 400px;
+}
