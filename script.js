@@ -1,31 +1,34 @@
+import Login from './login.js';
+import Cadastro from './cadastro.js';
+
 const content = document.getElementById('content');
 
-//content.appendChild(criaTitulo('Seja bem-vindo(a)!'))
+const login = new Login();
+const cadastro = new Cadastro();
 
-function criaTitulo(texto) {
-    const h1 = document.createElement('h1');
-    h1.classList.add('titulo');
-    h1.innerText = texto;
-    return h1;
-}
+content.innerHTML = login.inicia();
+content.innerHTML += cadastro.inicia();
 
-class Login {
-    constructor() {
+const loginDiv = document.querySelector('div#login');
+const cadastroDiv = document.querySelector('div#cadastro');
+cadastroDiv.style.display = 'none';
 
-    }
+const botaoLogin = document.querySelector('button#login');
+const linkCadastro = document.querySelector('a.linkCadastro');
+const botaoCadastro = document.querySelector('button#cadastro');
 
-    criaTitulo(texto) {
-        const h1 = document.createElement('h1');
-        h1.classList.add('titulo');
-        h1.innerText = texto;
-        return h1;
-    }
+botaoLogin.addEventListener('click', () => {
+    login.inputPreenchido;
+    // preciso ver como remover as mensagens de erro
+});
 
-    montaLogin() {
+linkCadastro.addEventListener('click', () => {
+    loginDiv.style.display = 'none';
+    cadastroDiv.style.display = 'flex';
+});
 
-    }
-}
+botaoCadastro.addEventListener('click', (e) => {
+    e.preventDefault();
+    cadastro.valida();
+})
 
-const loginOi = new Login();
-
-content.appendChild(loginOi.criaTitulo('oi'));
