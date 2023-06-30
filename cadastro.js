@@ -33,20 +33,32 @@ export default class Cadastro {
         return `<button type='button' id='cadastro'>Criar cadastro</button>`;
     }
 
+    geraMensagem(msg) {
+        const p = document.createElement('p');
+        p.classList.add('aviso');
+        p.innerText = msg;
+        const aviso = content.appendChild(p);
+        return setTimeout(() => content.removeChild(aviso), 3000);
+    }
+
     valida() {
         const campos = {
             email: document.querySelector('input#email').value,
             senha: document.querySelector('input#pwdCadastro').value,
             senhaRepetir: document.querySelector('input#pwd2Cadastro').value
         }
-       
-        if (campos.email === '' || campos.senha === '' || campos.senhaRepetir === '') return content.innerHTML += '<p class="erro">Preencha todos os campos.</p>';
 
-        if (campos.email.indexOf('@') === -1)  return content.innerHTML += '<p class="erro">Digite um email válido.</p>';
+        if (campos.email === '' || campos.senha === '' || campos.senhaRepetir === '') return this.geraMensagem('Preencha todos os campos.');
 
-        if (campos.senha !== campos.senhaRepetir) return content.innerHTML += '<p class="erro">As senhas devem ser iguais.</p>';
+        if (campos.email.indexOf('@') === -1) return this.geraMensagem('Digite um email válido.');
+
+        if (campos.senha.length < 5) return this.geraMensagem('A senha deve ter 5 caracteres no mínimo.');
+
+        if (campos.senha !== campos.senhaRepetir) return this.geraMensagem('As senhas devem ser iguais.');
 
         localStorage.setItem('loginSavedInfo', `{"usuario": "${campos.email}", "senha": "${campos.senha}"}`);
+        this.geraMensagem('Cadastro feito com sucesso!');
+        return setTimeout(() => window.location.reload(), 2000);
     }
 
 }

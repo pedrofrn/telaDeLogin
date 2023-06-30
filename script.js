@@ -17,18 +17,11 @@ const botaoLogin = document.querySelector('button#login');
 const linkCadastro = document.querySelector('a.linkCadastro');
 const botaoCadastro = document.querySelector('button#cadastro');
 
-botaoLogin.addEventListener('click', () => {
-    login.inputPreenchido;
-    // preciso ver como remover as mensagens de erro
-});
+botaoLogin.addEventListener('click', () => login.inputPreenchido());
 
 linkCadastro.addEventListener('click', () => {
     loginDiv.style.display = 'none';
     cadastroDiv.style.display = 'flex';
 });
 
-botaoCadastro.addEventListener('click', (e) => {
-    e.preventDefault();
-    cadastro.valida();
-})
-
+botaoCadastro.addEventListener('click', () => cadastro.valida());
